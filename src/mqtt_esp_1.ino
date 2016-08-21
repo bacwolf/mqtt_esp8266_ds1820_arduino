@@ -19,12 +19,12 @@ char* server = "your MQTT Server";
 //DS18B20 on GPIO2
 OneWire  ds(2);
 
-WiFiClient wifiClient;
-PubSubClient client(server, 1883, callback, wifiClient);
-
 void callback(char* topic, byte* payload, unsigned int length) {
   // handle message arrived
 }
+
+WiFiClient wifiClient;
+PubSubClient client(server, 1883, callback, wifiClient);
 
 String macToStr(const uint8_t* mac)
 {
