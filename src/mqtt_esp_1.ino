@@ -183,7 +183,7 @@ String raw_temp = String(raw, DEC);
       // ESP.reset(); // This will do a hard reset and leave registers in funny states
     }
 
-  delay(5000);
+  delay(30000);
 }
 //End of the OneWire-Devices, reset Loop
 Serial.println("End of Onewire Bus");
