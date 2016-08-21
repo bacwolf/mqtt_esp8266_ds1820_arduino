@@ -179,6 +179,8 @@ String raw_temp = String(raw, DEC);
     }
     else {
       Serial.println("Publish failed");
+      ESP.restart(); // Restart the ESP, cleanly
+      // ESP.reset(); // This will do a hard reset and leave registers in funny states
     }
 
   delay(5000);
