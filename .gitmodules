@@ -1,6 +1,0 @@
-[submodule "lib/onewire"]
-	path = lib/onewire
-	url = https://github.com/PaulStoffregen/OneWire
-[submodule "lib/pubsubclient"]
-	path = lib/pubsubclient
-	url = https://github.com/knolleary/pubsubclient
