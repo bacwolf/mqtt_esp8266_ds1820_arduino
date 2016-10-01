@@ -5,9 +5,6 @@ python:
 # Cache PlatformIO packages using Travis CI container-based infrastructure
 sudo: false
 
-git:
-    submodules: true
-
 cache:
     directories:
         - "~/.platformio"
@@ -17,7 +14,3 @@ env:
 
 install:
     - pip install -U platformio
-    - platformio lib install 1 89
-
-script:
-    - platformio ci --board=nodemcu --lib="."
