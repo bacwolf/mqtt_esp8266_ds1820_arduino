@@ -178,12 +178,12 @@ String raw_temp = String(raw, DEC);
       Serial.println("Publish ok");
     }
     else {
-      Serial.println("Publish failed");
+      Serial.println("Publish failed. Restarting module");
       ESP.restart(); // Restart the ESP, cleanly
       // ESP.reset(); // This will do a hard reset and leave registers in funny states
     }
 
-  delay(30000);
+  delay(5000);
 }
 //End of the OneWire-Devices, reset Loop
 Serial.println("End of Onewire Bus");
