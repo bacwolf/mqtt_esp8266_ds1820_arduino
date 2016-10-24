@@ -40,20 +40,20 @@ String macToStr(const uint8_t* mac)
 void setup() {
   Serial.begin(115200);
   delay(10);
-  
+
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
-  
+
   WiFi.begin(ssid, password);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("WiFi connected");  
+  Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
@@ -70,7 +70,7 @@ void setup() {
   Serial.print(server);
   Serial.print(" as ");
   Serial.println(clientName);
-  
+
   if (client.connect((char*) clientName.c_str())) {
     Serial.println("Connected to MQTT broker");
   }
@@ -87,12 +87,12 @@ void loop() {
   byte type_s;
   byte data[12];
   byte addr[8];
-  
+
 
 //Loop through all DS1820
 
 while(ds.search(addr))
-{ 
+{
   Serial.print("ROM =");
 
 //Topic is built from a static String plus the ID of the DS18B20
@@ -108,7 +108,7 @@ while(ds.search(addr))
       return;
   }
   Serial.println();
- 
+
 // the first ROM byte indicates which chip
   switch (addr[0]) {
     case 0x10:
@@ -126,17 +126,17 @@ while(ds.search(addr))
     default:
       Serial.println("Device is not a DS18x20 family device.");
       return;
-  } 
+  }
 
   ds.reset();
   ds.select(addr);
   ds.write(0x44, 1);        // start conversion, with parasite power on at the end
-  
+
   delay(1000);     // maybe 750ms is enough, maybe not
   // we might do a ds.depower() here, but the reset will take care of it.
-  
+
   present = ds.reset();
-  ds.select(addr);    
+  ds.select(addr);
   ds.write(0xBE);         // Read Scratchpad
 
   Serial.print("  Data = ");
@@ -190,5 +190,3 @@ Serial.println("End of Onewire Bus");
 ds.reset_search();
 return;
 }
-
-
